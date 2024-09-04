@@ -32,5 +32,9 @@ module App
       g.helper false
       g.test_framework nil
     end
+
+    # Google認証で使用
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore, key: '_dust_hunters_session'
   end
 end

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get '/auth/:provider/callback', to: 'sessions#create'
+  namespace :api do
+    namespace :v1 do
+      get 'users/current', to: 'users#current'
+    end
+  end
 end

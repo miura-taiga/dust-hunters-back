@@ -19,7 +19,8 @@ class SessionsController < ApplicationController
         name: '新規ユーザー',
         email: user_info['info']['email'],
         hunterrank: 1,
-        gender: 'male'
+        gender: 'male',
+        uid: generate_uid
       )
 
       UserAuthentication.create(user_id: user.id, uid: google_user_id, provider:)
@@ -29,6 +30,10 @@ class SessionsController < ApplicationController
   end
 
   private
+
+  def generate_uid
+    SecureRandom.hex(10)
+  end
 
   def generate_token_with_google_user_id(google_user_id, provider)
     exp = Time.now.to_i + 24 * 3600

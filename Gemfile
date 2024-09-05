@@ -43,7 +43,8 @@ gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-google-oauth2'
 gem 'jwt'
 
-## Serializers
+
+# jsonデータ整形のためのgem
 gem 'active_model_serializers'
 
 group :development, :test do

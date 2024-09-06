@@ -29,7 +29,8 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find_by!(uid: params[:uid])
+    user_authentication = UserAuthentication.find_by!(uid: params[:uid])
+    @user = user_authentication.user
   rescue ActiveRecord::RecordNotFound
     render json: { error: 'ユーザーが見つかりません' }, status: :not_found
   end

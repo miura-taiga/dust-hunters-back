@@ -9,7 +9,7 @@ class Api::V1::UsersController < ApplicationController
 
   def show
     if @current_user
-      render json: { user: @current_user }
+      render json: @current_user, serializer: UserSerializer
     else
       render json: { error: '認証情報を取得できません' }, status: :unauthorized
     end
@@ -17,7 +17,7 @@ class Api::V1::UsersController < ApplicationController
 
   def update
     if @current_user.update(user_params)
-      render json: @current_user, status: :ok
+      render json: @current_user, serializer: UserSerializer, status: :ok
     else
       render json: { errors: @current_user.errors.full_messages }, status: :unprocessable_entity
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_09_08_061501) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_08_063802) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,6 +45,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_08_061501) do
     t.index ["user_id"], name: "index_user_authentications_on_user_id"
   end
 
+  create_table "user_quests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "quest_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quest_id"], name: "index_user_quests_on_quest_id"
+    t.index ["user_id"], name: "index_user_quests_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "name", limit: 10, null: false
@@ -57,4 +66,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_08_061501) do
 
   add_foreign_key "quests", "monsters"
   add_foreign_key "user_authentications", "users"
+  add_foreign_key "user_quests", "quests"
+  add_foreign_key "user_quests", "users"
 end

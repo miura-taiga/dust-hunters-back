@@ -8,7 +8,7 @@
 
 # モンスターを作成
 monster1 = Monster.create!(
-  name: 'フライグ',
+  name: 'フレイグ',
   start_battle_image_url: '/images/monsters/starts/monster1.jpg',
   end_battle_image_url: '/images/monsters/ends/monster1.jpg',
   bestiary_monster_image_url: '/images/monsters/encyclopedias/monster1.jpg'

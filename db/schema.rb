@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_09_08_054307) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_08_061501) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_08_054307) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_monsters_on_name", unique: true
+  end
+
+  create_table "quests", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "body"
+    t.bigint "monster_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["monster_id"], name: "index_quests_on_monster_id"
+    t.index ["title"], name: "index_quests_on_title", unique: true
   end
 
   create_table "user_authentications", force: :cascade do |t|
@@ -45,5 +55,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_08_054307) do
     t.index ["email"], name: "index_users_on_email"
   end
 
+  add_foreign_key "quests", "monsters"
   add_foreign_key "user_authentications", "users"
 end

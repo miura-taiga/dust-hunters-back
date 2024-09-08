@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :users, param: :uid, only: %i[index show update]
       get 'users/current', to: 'users#current'
       resources :quests, only: %i[index show]
+      resources :monsters, only: %i[index show]
     end
   end
 end

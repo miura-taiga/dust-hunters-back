@@ -1,4 +1,4 @@
-class Api::V1::QuestsController < ApplicationController
+class Api::V1::MonstersController < ApplicationController
   def index
     @monsters = Monster.all
     render json: @monsters, each_serializer: MonsterSerializer

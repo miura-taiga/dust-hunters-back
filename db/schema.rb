@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_08_063802) do
 
   create_table "monsters", force: :cascade do |t|
     t.string "name", null: false
-    t.text "body", null: false
+    t.text "body"
     t.string "start_battle_image_url"
     t.string "end_battle_image_url"
     t.string "bestiary_monster_image_url"

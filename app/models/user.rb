@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   validates :name, length: { maximum: 10 }, presence: true
+  validates :body, presence: true
   validates :gender, presence: true
   validates :hunterrank, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 999 }
 

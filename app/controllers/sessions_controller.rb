@@ -19,8 +19,14 @@ class SessionsController < ApplicationController
         name: '新規ユーザー',
         email: user_info['info']['email'],
         hunterrank: 1,
-        gender: 'male',
+        gender: 'male'
       )
+
+      Monster.all.each do |monster|
+        Rails.logger.info "モンスター: #{monster.name} とユーザー: #{user.id} のために GuildCard を作成しようとしています"
+        guild_card = GuildCard.create!(user_id: user.id, monster_id: monster.id, defeat_count: 0)
+        Rails.logger.info "GuildCard が作成されました: #{guild_card.inspect}"
+      end
 
       UserAuthentication.create(user_id: user.id, uid: google_user_id, provider:)
 

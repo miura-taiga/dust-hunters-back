@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_09_08_063802) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_12_053010) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "guild_cards", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "monster_id", null: false
+    t.bigint "quest_id"
+    t.integer "defeat_count", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["monster_id"], name: "index_guild_cards_on_monster_id"
+    t.index ["quest_id"], name: "index_guild_cards_on_quest_id"
+    t.index ["user_id", "monster_id"], name: "index_guild_cards_on_user_id_and_monster_id", unique: true
+    t.index ["user_id"], name: "index_guild_cards_on_user_id"
+  end
 
   create_table "monsters", force: :cascade do |t|
     t.string "name", null: false
@@ -64,6 +77,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_08_063802) do
     t.index ["email"], name: "index_users_on_email"
   end
 
+  add_foreign_key "guild_cards", "monsters"
+  add_foreign_key "guild_cards", "quests"
+  add_foreign_key "guild_cards", "users"
   add_foreign_key "quests", "monsters"
   add_foreign_key "user_authentications", "users"
   add_foreign_key "user_quests", "quests"

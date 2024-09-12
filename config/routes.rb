@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :quests, only: %i[index show]
       resources :monsters, only: %i[index show]
       resources :guild_cards, param: :uid, only: [:show]
+      post 'guild_cards/increment_defeat_count', to: 'guild_cards#increment_defeat_count'
     end
   end
 end

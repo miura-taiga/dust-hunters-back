@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :user_authentications
   has_many :user_quests
   has_many :quests, through: :user_quests
+  has_many :guild_cards, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true
   validates :name, length: { maximum: 10 }, presence: true

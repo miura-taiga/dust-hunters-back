@@ -13,7 +13,7 @@ class Api::V1::GuildCardsController < ApplicationController
 
     if guild_card
       guild_card.increment!(:defeat_count)
-      render json: guild_card, status: :ok
+      render json: guild_card, serializer: GuildCardSerializer, status: :ok
     else
       render json: { error: '該当モンスターのギルドカードが見つかりません' }, status: :not_found
     end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, param: :uid, only: %i[index show update]
+      patch 'users/:id/increment_hunter_rank', to: 'users#increment_hunter_rank'
       get 'users/current', to: 'users#current'
       resources :quests, only: %i[index show]
       resources :monsters, only: %i[index show]

@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :authenticate_request, only: %i[show update current]
+  before_action :authenticate_request, only: %i[show update increment_hunter_rank current]
 
   # API確認用
   def index
@@ -20,6 +20,17 @@ class Api::V1::UsersController < ApplicationController
       render json: @current_user, serializer: UserSerializer, status: :ok
     else
       render json: { errors: @current_user.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def increment_hunter_rank
+    user = User.find_by(id: params[:id])
+
+    if user
+      user.increment!(:hunterRank)
+      render json: user, serializer: UserSerializer, status: :ok
+    else
+      render json: { error: '該当ユーザーが見つかりません' }, status: :not_found
     end
   end
 

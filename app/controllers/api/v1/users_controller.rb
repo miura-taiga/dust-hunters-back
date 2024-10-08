@@ -24,14 +24,13 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def increment_hunter_rank
-    user = User.find_by(id: params[:id])
+    user_authentication = UserAuthentication.find_by!(uid: params[:uid], provider: 'google_oauth2')
+    user = User.find_by!(id: user_authentication.user_id)
 
-    if user
-      user.increment!(:hunterRank)
-      render json: user, serializer: UserSerializer, status: :ok
-    else
-      render json: { error: '該当ユーザーが見つかりません' }, status: :not_found
-    end
+    user.increment!(:hunterRank)
+    render json: user, serializer: UserSerializer, status: :ok
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: 'ユーザーが見つかりません' }, status: :not_found
   end
 
   def current

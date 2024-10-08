@@ -34,6 +34,6 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :gender)
+    params.require(:user).permit(:name, :gender, :hunterRank)
   end
 end

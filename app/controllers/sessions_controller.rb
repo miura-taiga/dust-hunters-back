@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       user = User.create(
         name: '新規ユーザー',
         email: user_info['info']['email'],
-        hunterrank: 1,
+        hunterRank: 1,
         gender: 'male'
       )
 

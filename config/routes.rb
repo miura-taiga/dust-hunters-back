@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       resources :monsters, only: %i[index show]
       resources :guild_cards, param: :uid, only: [:show]
       patch 'guild_cards/:uid/increment_defeat_count', to: 'guild_cards#increment_defeat_count'
+      resources :user_quests, only: [:create]
+      patch 'user_quests/:quest_id/complete', to: 'user_quests#complete'
     end
   end
 end

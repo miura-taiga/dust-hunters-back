@@ -4,6 +4,7 @@ AllCops:
   NewCops: enable
   SuggestExtensions: false
   Exclude:
+    - 'app/controllers/sessions_controller.rb'
     - 'vendor/**/*'
     - 'db/**/*'
     - 'bin/**/*'

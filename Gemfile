@@ -57,5 +57,10 @@ end
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # RubocopのLintチェックに使用
+  gem "rubocop"
+  gem "rubocop-rails"
+  gem "rubocop-checkstyle_formatter"
 end
 

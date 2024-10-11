@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     provider = user_info['provider']
     token = generate_token_with_google_user_id(google_user_id, provider)
 
-    user_authentication = UserAuthentication.find_by(uid: google_user_id, provider:)
+    user_authentication = UserAuthentication.find_by(uid: google_user_id, provider: provider)
 
     if user_authentication
       Rails.logger.info('アプリユーザー登録されている')
@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
         Rails.logger.info "GuildCard が作成されました: #{guild_card.inspect}"
       end
 
-      UserAuthentication.create(user_id: user.id, uid: google_user_id, provider:)
+      UserAuthentication.create(user_id: user.id, uid: google_user_id, provider: provider)
 
       redirect_to "#{frontend_url}/quests?token=#{token}", allow_other_host: true
     end
@@ -38,7 +38,7 @@ class SessionsController < ApplicationController
 
   def generate_token_with_google_user_id(google_user_id, provider)
     exp = Time.now.to_i + 24 * 3600
-    payload = { google_user_id:, provider:, exp: }
+    payload = { google_user_id: google_user_id, provider: provider, exp: exp }
     hmac_secret = ENV['JWT_SECRET_KEY']
     JWT.encode(payload, hmac_secret, 'HS256')
   end

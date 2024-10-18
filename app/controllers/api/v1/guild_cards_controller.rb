@@ -8,6 +8,15 @@ class Api::V1::GuildCardsController < ApplicationController
     end
   end
 
+  def defeated_records
+    user_auth = UserAuthentication.find_by!(uid: params[:uid])
+    guild_cards = GuildCard.where(user_id: user_auth.user_id)
+
+    render json: guild_cards, each_serializer: GuildCardSerializer, status: :ok
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: 'ユーザーが見つかりません' }, status: :not_found
+  end
+
   def increment_defeat_count
     guild_card = GuildCard.find_by(user_id: @current_user.id, monster_id: params[:monster_id])
 

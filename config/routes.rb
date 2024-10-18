@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       
       resources :guild_cards, param: :uid, only: [:show]
       patch 'guild_cards/:uid/increment_defeat_count', to: 'guild_cards#increment_defeat_count'
+      get 'guild_cards/defeated_records/:uid', to: 'guild_cards#defeated_records'
+
 
       resources :user_quests, only: [:create]
       patch 'user_quests/:quest_id/complete', to: 'user_quests#complete'

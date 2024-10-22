@@ -1,7 +1,7 @@
 class Api::V1::GuildCardsController < ApplicationController
   def show
     if @current_user
-      guild_cards = GuildCard.where(user_id: @current_user.id)
+      guild_cards = GuildCard.where(user_id: @current_user.id).order(monster_id: :asc)
       render json: guild_cards, each_serializer: GuildCardSerializer, status: :ok
     else
       render json: { error: '認証情報を取得できません' }, status: :unauthorized
@@ -10,7 +10,7 @@ class Api::V1::GuildCardsController < ApplicationController
 
   def defeated_records
     user_auth = UserAuthentication.find_by!(uid: params[:uid])
-    guild_cards = GuildCard.where(user_id: user_auth.user_id)
+    guild_cards = GuildCard.where(user_id: user_auth.user_id).order(monster_id: :asc)
 
     render json: guild_cards, each_serializer: GuildCardSerializer, status: :ok
   rescue ActiveRecord::RecordNotFound

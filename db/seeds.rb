@@ -9,7 +9,6 @@
 # モンスターを作成
 monster1 = Monster.create!(
   name: 'フレイグ',
-  body: 'フレイグは火を操る強大なモンスターです。',
   start_battle_image_url: '/images/monsters/starts/monster1.jpg',
   end_battle_image_url: '/images/monsters/ends/monster1.jpg',
   bestiary_monster_image_url: '/images/monsters/encyclopedias/monster1.jpg'
@@ -17,7 +16,6 @@ monster1 = Monster.create!(
 
 monster2 = Monster.create!(
   name: 'ゲンガオレン',
-  body: 'ゲンガオレンは雷を操る巨大な犬の姿をしています。',
   start_battle_image_url: '/images/monsters/starts/monster2.jpg',
   end_battle_image_url: '/images/monsters/ends/monster2.jpg',
   bestiary_monster_image_url: '/images/monsters/encyclopedias/monster2.jpg'
@@ -25,7 +23,6 @@ monster2 = Monster.create!(
 
 monster3 = Monster.create!(
   name: 'インヴェリオン',
-  body: 'インヴェリオンは強力な火を吹く獣です。',
   start_battle_image_url: '/images/monsters/starts/monster3.jpg',
   end_battle_image_url: '/images/monsters/ends/monster3.jpg',
   bestiary_monster_image_url: '/images/monsters/encyclopedias/monster3.jpg'
@@ -33,7 +30,6 @@ monster3 = Monster.create!(
 
 monster4 = Monster.create!(
   name: 'ブリゼリーヌ',
-  body: 'ブリゼリーヌは冷気を操る氷竜です。',
   start_battle_image_url: '/images/monsters/starts/monster4.jpg',
   end_battle_image_url: '/images/monsters/ends/monster4.jpg',
   bestiary_monster_image_url: '/images/monsters/encyclopedias/monster4.jpg'
@@ -41,7 +37,6 @@ monster4 = Monster.create!(
 
 monster5 = Monster.create!(
   name: 'オージオン',
-  body: 'オージオンは海の力を持つ巨大な龍です。',
   start_battle_image_url: '/images/monsters/starts/monster5.jpg',
   end_battle_image_url: '/images/monsters/ends/monster5.jpg',
   bestiary_monster_image_url: '/images/monsters/encyclopedias/monster5.jpg'

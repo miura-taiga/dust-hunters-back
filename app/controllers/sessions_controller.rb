@@ -17,7 +17,6 @@ class SessionsController < ApplicationController
       Rails.logger.info('まだアプリユーザー登録されていない')
       user = User.create(
         name: '新規ユーザー',
-        email: user_info['info']['email'],
         hunterRank: 1,
         gender: 'male'
       )

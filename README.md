@@ -1,24 +1,23 @@
-# README
+## Dockerについて
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### 立ち上げ
+```
+docker compose up back
+```
 
-Things you may want to cover:
+#### コンテナの入り方、コンテナ外から実行する場合
 
-* Ruby version
+```
+docker compose run back bash
+```
+```
+docker compose run back ~~~
+```
 
-* System dependencies
+## Lintチェックについて
 
-* Configuration
+Rubocopを採用していますのでPR作成前に以下コマンドを実行して問題ないことを確認してください。
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+docker compose exec web bundle exec rubocop
+```
